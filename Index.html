@@ -1,1 +1,187 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Winner Announcement</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 2em;
+      font-weight: bold;
+      color: white;
+    }
+
+    #photo-section {
+      margin-top: 30px;
+    }
+
+    #photo-section img {
+      max-width: 90%;
+      margin-top: 10px;
+    }
+
+    #photo-section figcaption {
+      font-style: italic;
+      margin-top: 5px;
+    }
+
+    #message {
+      font-family: serif;
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+
+    #inputSection {
+      margin: 30px 0;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #result {
+      margin-top: 20px;
+    }
+
+    #downloadBtn {
+      margin-top: 10px;
+      padding: 8px 16px;
+      display: none;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #contacts {
+      margin-top: 40px;
+    }
+
+    .contact-btn {
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .contact-btn.telegram {
+      background-color: #0088cc;
+    }
+
+    .good-luck {
+      margin-top: 30px;
+      color: #00aaff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome dear winner. You have been selected by FedEx and André Rieu.</h1>
+
+  <div id="photo-section">
+    <figure>
+      <img src="/storage/emulated/0/DCIM/100PINT/Épingles/914b9727b02052c44210ca44561c8d29.jpg" alt="Winner Photo">
+      <figcaption>Here are Mrs. Kurch and her husband Tamar, our lucky winners from yesterday... If you were selected, you are welcome to join us. </figcaption>
+    </figure>
+  </div>
+
+  <div id="message">You are invited to confirm your unique winner ID below.</div>
+
+  <div id="inputSection">
+    <input type="text" id="numberInput" placeholder="Enter 8-digit number" maxlength="8" />
+    <button onclick="verifyNumber()">Submit</button>
+  </div>
+
+  <div id="result"></div>
+
+  <button id="downloadBtn" onclick="downloadImage()">Download Image</button>
+
+   
+   
+   <!-- ... (tout l'en-tête reste identique) ... -->
+
+  <div id="contacts">
+    <p>To receive your prize, please contact the transport agents via Telegram.</p>
+    
+    
+    <button class="contact-btn telegram" onclick="window.location.href='https://t.me/FedExDailyHiv'">Telegram</button>
+    
+    </a>
+  </div>
+
+  
+
+<!-- ... (le reste du script reste inchangé) ... -->
+
+   
+   
+   
+  </div>
+
+  <div class="good-luck">Good luck dear winner</div>
+
+  <script>
+    function verifyNumber() {
+      const input = document.getElementById("numberInput").value;
+      const resultDiv = document.getElementById("result");
+      const downloadBtn = document.getElementById("downloadBtn");
+      resultDiv.innerHTML = "";
+      downloadBtn.style.display = "none";
+
+      if (input === "88055088") {
+        const img = document.createElement("img");
+        img.src = "/storage/emulated/0/Download/wallpaper-fond-ecran-mobile-iphone-android-4k-hd-dragon-ball-5.png?text=Your+Winner+Certificate";
+        img.alt = "Winner Image";
+        img.style.marginTop = "20px";
+        img.style.maxWidth = "90%";
+        resultDiv.appendChild(img);
+        downloadBtn.style.display = "inline-block";
+      } else {
+        resultDiv.innerHTML = "<p style='color: red;'>Authentication failed</p>";
+      }
+    }
+
+    function downloadImage() {
+      const link = document.createElement('a');
+      link.href = "/storage/emulated/0/Download/wallpaper-fond-ecran-mobile-iphone-android-4k-hd-dragon-ball-5.png?text=Your+Winner+Certificate";
+      link.download = "Winner_Image.png";
+      link.click();
+    }
+  </script>
+</body>
+</html>
